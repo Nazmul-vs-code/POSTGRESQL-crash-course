@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { CreateUser } from "../controller/UserController.js";
+import { CreateUser, ViewUser } from "../controller/UserController.js";
 
 export let UserRoutes = Router()
 
-UserRoutes.post('/create', CreateUser)
+UserRoutes.post('/create', CreateUser);
 
 
+UserRoutes.get('/view', ViewUser);

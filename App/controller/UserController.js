@@ -33,3 +33,37 @@ export let CreateUser = async (req, res) => {
         });
     }
 };
+
+
+export let ViewUser = async (req, res) => {
+    try {
+
+        let UserView = await User.findAll()
+
+        if (UserView.length === 0) {
+            return res.status(404).json(
+                {
+                    message : "User not found !",
+                    status : false,
+                }
+            )
+        }
+
+        // console.log(UserView)
+        res.status(302).json(
+            {
+                status : true,
+                Data : UserView
+            }
+        )
+        
+    } catch (err) {
+        return res.status(500).json(
+            {
+                status : false,
+                message : 'internal server issue!',
+                error : err.message
+            }
+        )
+    }
+}
